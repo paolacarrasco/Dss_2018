@@ -54,9 +54,21 @@ ejbMovimientoFacade.create(movimiento);
 @Path("/{id}")
 
 
+
 public void edit(@PathParam("id")long id, Movimiento movimiento){
 ejbMovimientoFacade.edit(movimiento);
 }
+
+@GET
+@Path ("/{descrip}")
+@Produces({MediaType.APPLICATION_JSON})
+
+public List<Movimiento> findByDescripcion(@PathParam("descrip")String descrip){
+return ejbMovimientoFacade.findByDescrip(descrip);
+}
+
+
+
 
 
 //Enlistar los movimientos pasando como parametro el id del estado determinado

@@ -39,5 +39,19 @@ public class MovimientoFacade extends AbstractFacade<Movimiento> {
                 .setParameter("estado", estado)
                 .getResultList();
     }
-    
+      public Object getSaldo(int idCuenta){
+        return em.createNamedQuery("Movimiento.getSaldo",Movimiento.class)
+                .setParameter("idcuenta", idCuenta)
+                .getSingleResult();
+      }
+      //mlodificar
+
+      
+    public List<Movimiento>findByDescrip(String descrip){
+        return em.createNamedQuery("Movimiento.findByDescripcion",Movimiento.class)
+                .setParameter("descrip", descrip)
+                .getResultList();
+    }
+      //getsingleresult
 }
+

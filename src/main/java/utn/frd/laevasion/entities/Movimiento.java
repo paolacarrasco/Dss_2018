@@ -38,6 +38,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Movimiento.findByTipo", query = "SELECT m FROM Movimiento m WHERE m.tipo = :tipo")
     , @NamedQuery(name = "Movimiento.findByEstado", query = "SELECT m FROM Movimiento m WHERE m.estado = :estado")
     , @NamedQuery(name = "Movimiento.findByImporte", query = "SELECT m FROM Movimiento m WHERE m.importe = :importe")
+    , @NamedQuery(name = "Movimiento.findByDescripcion", query = "SELECT m FROM Movimiento m WHERE m.descrip = :descrip")
+    , @NamedQuery(name = "Movimiento.getSaldo", query = "SELECT SUM (m.importe) (CASE when m.tipo=2 then m.importe E -m.importe END) from movimiento as m where m.id_cuenta = :idCuenta")
     , @NamedQuery(name = "Movimiento.findByIdCuenta", query = "SELECT m FROM Movimiento m WHERE m.idCuenta = :idCuenta")})
 public class Movimiento implements Serializable {
 
@@ -63,6 +65,9 @@ public class Movimiento implements Serializable {
     @NotNull
     @Column(name = "estado")
     private int estado;
+    @Basic(optional = true)
+    @Column(name = "descrip")
+    private String descrip;
     @Basic(optional = false)
     @NotNull
     @Column(name = "importe")
@@ -79,13 +84,21 @@ public class Movimiento implements Serializable {
         this.id = id;
     }
 
-    public Movimiento(Integer id, Date creado, int tipo, int estado, double importe, int idCuenta) {
+    public Movimiento(Integer id, Date creado, int tipo, int estado, double importe, int idCuenta, String descrip) {
         this.id = id;
         this.creado = creado;
         this.tipo = tipo;
         this.estado = estado;
         this.importe = importe;
         this.idCuenta = idCuenta;
+        this.descrip = descrip;
+    }
+    public String getDescrip() {
+        return descrip;
+    }
+
+    public void setDescrip(String descrip) {
+        this.descrip = descrip;
     }
 
     public Integer getId() {
