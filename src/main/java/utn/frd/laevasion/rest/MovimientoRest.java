@@ -7,7 +7,7 @@ package utn.frd.laevasion.rest;
 
 /**
  *
- * @author Paola
+ * @author Paola y Nicolas
  */
 import java.util.List;
 import javax.ws.rs.Path;  
@@ -64,7 +64,7 @@ ejbMovimientoFacade.edit(movimiento);
 @Path ("MovPorDescr/{descripcion}")
 @Produces({MediaType.APPLICATION_JSON})
 
-public List<Movimiento> findByDescripcion(@PathParam("descripcion")String descrip){
+public List<Movimiento> findByDescripcion(@PathParam("descripcion")String descripcion){
 return ejbMovimientoFacade.findByDescrip(descripcion);
 }
 
