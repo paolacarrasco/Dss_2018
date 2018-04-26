@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package utn.frd.laevasion.entities;
 
 import java.io.Serializable;
@@ -21,36 +16,31 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Paola
- */
 @Entity
 @Table(name = "cuenta")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Cuenta.findAll", query = "SELECT c FROM Cuenta c")
-    , @NamedQuery(name = "Cuenta.findById", query = "SELECT c FROM Cuenta c WHERE c.id = :id")
-    , @NamedQuery(name = "Cuenta.findByNumero", query = "SELECT c FROM Cuenta c WHERE c.numero = :numero")
-    , @NamedQuery(name = "Cuenta.findByApertura", query = "SELECT c FROM Cuenta c WHERE c.apertura = :apertura")
-    , @NamedQuery(name = "Cuenta.findByIdCliente", query = "SELECT c FROM Cuenta c WHERE c.idCliente = :idCliente")})
+@NamedQueries({ @NamedQuery(name = "Cuenta.findAll", query = "SELECT c FROM Cuenta c"), @NamedQuery(name = "Cuenta.findById", query = "SELECT c FROM Cuenta c WHERE c.id = :id"), @NamedQuery(name = "Cuenta.findByNumero", query = "SELECT c FROM Cuenta c WHERE c.numero = :numero"), @NamedQuery(name = "Cuenta.findByApertura", query = "SELECT c FROM Cuenta c WHERE c.apertura = :apertura"), @NamedQuery(name = "Cuenta.findByIdCliente", query = "SELECT c FROM Cuenta c WHERE c.idCliente = :idCliente") })
 public class Cuenta implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "numero")
     private long numero;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "apertura")
     @Temporal(TemporalType.TIMESTAMP)
     private Date apertura;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "id_cliente")
@@ -111,7 +101,6 @@ public class Cuenta implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Cuenta)) {
             return false;
         }
@@ -126,5 +115,4 @@ public class Cuenta implements Serializable {
     public String toString() {
         return "utn.frd.laevasion.Cuenta[ id=" + id + " ]";
     }
-    
 }

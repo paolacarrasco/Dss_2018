@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package utn.frd.laevasion.entities;
 
 import java.io.Serializable;
@@ -19,25 +14,20 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Paola
- */
 @Entity
 @Table(name = "estado_movimiento")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "EstadoMovimiento.findAll", query = "SELECT e FROM EstadoMovimiento e")
-    , @NamedQuery(name = "EstadoMovimiento.findById", query = "SELECT e FROM EstadoMovimiento e WHERE e.id = :id")
-    , @NamedQuery(name = "EstadoMovimiento.findByNombre", query = "SELECT e FROM EstadoMovimiento e WHERE e.nombre = :nombre")})
+@NamedQueries({ @NamedQuery(name = "EstadoMovimiento.findAll", query = "SELECT e FROM EstadoMovimiento e"), @NamedQuery(name = "EstadoMovimiento.findById", query = "SELECT e FROM EstadoMovimiento e WHERE e.id = :id"), @NamedQuery(name = "EstadoMovimiento.findByNombre", query = "SELECT e FROM EstadoMovimiento e WHERE e.nombre = :nombre") })
 public class EstadoMovimiento implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -81,7 +71,6 @@ public class EstadoMovimiento implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof EstadoMovimiento)) {
             return false;
         }
@@ -96,5 +85,4 @@ public class EstadoMovimiento implements Serializable {
     public String toString() {
         return "utn.frd.laevasion.EstadoMovimiento[ id=" + id + " ]";
     }
-    
 }

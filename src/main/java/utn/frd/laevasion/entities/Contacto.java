@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package utn.frd.laevasion.entities;
 
 import java.io.Serializable;
@@ -22,43 +17,38 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Paola
- */
 @Entity
 @Table(name = "contacto")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Contacto.findAll", query = "SELECT c FROM Contacto c")
-    , @NamedQuery(name = "Contacto.findById", query = "SELECT c FROM Contacto c WHERE c.id = :id")
-    , @NamedQuery(name = "Contacto.findByTipo", query = "SELECT c FROM Contacto c WHERE c.tipo = :tipo")
-    , @NamedQuery(name = "Contacto.findByValor", query = "SELECT c FROM Contacto c WHERE c.valor = :valor")
-    , @NamedQuery(name = "Contacto.findByActualizado", query = "SELECT c FROM Contacto c WHERE c.actualizado = :actualizado")
-    , @NamedQuery(name = "Contacto.findByIdCliente", query = "SELECT c FROM Contacto c WHERE c.idCliente = :idCliente")})
+@NamedQueries({ @NamedQuery(name = "Contacto.findAll", query = "SELECT c FROM Contacto c"), @NamedQuery(name = "Contacto.findById", query = "SELECT c FROM Contacto c WHERE c.id = :id"), @NamedQuery(name = "Contacto.findByTipo", query = "SELECT c FROM Contacto c WHERE c.tipo = :tipo"), @NamedQuery(name = "Contacto.findByValor", query = "SELECT c FROM Contacto c WHERE c.valor = :valor"), @NamedQuery(name = "Contacto.findByActualizado", query = "SELECT c FROM Contacto c WHERE c.actualizado = :actualizado"), @NamedQuery(name = "Contacto.findByIdCliente", query = "SELECT c FROM Contacto c WHERE c.idCliente = :idCliente") })
 public class Contacto implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "tipo")
     private String tipo;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "valor")
     private String valor;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "actualizado")
     @Temporal(TemporalType.TIMESTAMP)
     private Date actualizado;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "id_cliente")
@@ -128,7 +118,6 @@ public class Contacto implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Contacto)) {
             return false;
         }
@@ -143,5 +132,4 @@ public class Contacto implements Serializable {
     public String toString() {
         return "utn.frd.laevasion.Contacto[ id=" + id + " ]";
     }
-    
 }

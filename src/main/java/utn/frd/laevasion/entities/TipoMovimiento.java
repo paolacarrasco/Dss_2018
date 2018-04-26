@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package utn.frd.laevasion.entities;
 
 import java.io.Serializable;
@@ -19,25 +14,20 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Paola
- */
 @Entity
 @Table(name = "tipo_movimiento")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "TipoMovimiento.findAll", query = "SELECT t FROM TipoMovimiento t")
-    , @NamedQuery(name = "TipoMovimiento.findById", query = "SELECT t FROM TipoMovimiento t WHERE t.id = :id")
-    , @NamedQuery(name = "TipoMovimiento.findByNombre", query = "SELECT t FROM TipoMovimiento t WHERE t.nombre = :nombre")})
+@NamedQueries({ @NamedQuery(name = "TipoMovimiento.findAll", query = "SELECT t FROM TipoMovimiento t"), @NamedQuery(name = "TipoMovimiento.findById", query = "SELECT t FROM TipoMovimiento t WHERE t.id = :id"), @NamedQuery(name = "TipoMovimiento.findByNombre", query = "SELECT t FROM TipoMovimiento t WHERE t.nombre = :nombre") })
 public class TipoMovimiento implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -81,7 +71,6 @@ public class TipoMovimiento implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof TipoMovimiento)) {
             return false;
         }
@@ -96,5 +85,4 @@ public class TipoMovimiento implements Serializable {
     public String toString() {
         return "utn.frd.laevasion.TipoMovimiento[ id=" + id + " ]";
     }
-    
 }

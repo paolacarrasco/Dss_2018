@@ -1,36 +1,37 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <h1>Bienvenidos al Banco "La Evasión"</h1>
-        <h2> El banco donde puede depositar todo y no declaras nada </h2>
-        <h3> Clases implementadas </h3>
-        <div>
-            <p>
-                Cliente Rest: Estructura de datos { id: int, nombre : string , cuil: int}
-                
-                 
-                
-                
-                
-                
-                
-                -GET: Otorga una lista de todos los clientes que se encuentran registrados en el banco. 
-                -POST: Da la posibilidad de crear nuevas entidades del tipo Cliente
-                -PUT: Actualiza la entidad cliente en base a los parametros enviados
-                -DELETE: Elimina entidades del tipo Cliente
-                -GET: Mediante un parametro determinado (el id de cliente) me permite enlistar todos los atributos en base al valor enviado
-                
-                
-                
-            </p>    
-            
-        </div>
-                </div>
-        
-        
-    </body>
-</html>
+<h1 style="padding-left: 210px; text-align: center;"><strong><span style="text-decoration: underline;">Trabajo pr&aacute;ctico N&deg;1 :</span></strong></h1>
+<h1 style="padding-left: 210px; text-align: center;"><strong><span style="text-decoration: underline;">Banco 'La Evasi&oacute;n'</span></strong></h1>
+<p>&nbsp;</p>
+<p><strong>El banco donde puede depositar todo y no declaras nada</strong></p>
+<p>&nbsp;</p>
+<p>Puntos a resolver: Crear un servicio Rest que devuelva los datos con formato JSON.</p>
+<ul>
+<li><span style="text-decoration: underline;">Obtener los datos de un cliente:</span>&nbsp;Para traer los datos de un cliente en particular, en primer lugar se debe se&ntilde;alar aquel del cual se quieren obtener los datos, en este caso se utiliza como parametro el ID. El m&eacute;todo GET (pasandole el id del cliente del cual quiero obtener los datos) devolver&aacute; en forma de JSON todos los datos del mismo.
+<ul>
+<li>Se resuelve invocando:<span style="color: #0000ff;">&nbsp;http://localhost:8080/LaEvasion/rest/cliente/unCliente/</span><strong><span style="color: #0000ff;">ID</span> (el ID es el parametro el cual se debe completar con el correspondiente del cliente)</strong></li>
+</ul>
+</li>
+<li><span style="text-decoration: underline;">Listar todas las cuentas asociadas a un cliente:</span> Tal como se ve en el diagrama la tabla cuenta y cliente est&aacute;n relacionadas por el id del cliente. La relaci&oacute;n establecida es one to many, un cliente para m&uacute;ltiples cuentas. Para resolverlo, se utiliza la consulta que se da en la entidad Cuenta llamada findByClienteId. El servicio Rest recibe como parametro un cliente y devuelve un JSON. Para invocarlo se debe ingresar a la siguiente url:
+<ul>
+<li>http://localhost:8080/LaEvasion/rest/cuenta/<strong>IDCliente : Me devolver&aacute; una lista con todas las cuentas asociadas a ese cliente</strong></li>
+</ul>
+</li>
+<li><span style="text-decoration: underline;">Obtener los &uacute;ltimos 10 movimientos de una Cuenta:</span> El rest recibir&aacute; un parametro el cual ser&aacute; el id de la cuenta. Desde la entidad se ejecuta la consulta que traer&aacute; los registros ordenados y el rest limitar&aacute; el resultado 10 registros.&nbsp;
+<ul>
+<li><a href="http://localhost:8080/LaEvasion/rest/Movimiento/">http://localhost:8080/LaEvasion/rest/movimiento/ultimosMov/idCuenta : <span style="text-decoration: underline;"><span style="color: #000000; text-decoration: underline;">Me devolver&aacute; la lista con los &uacute;ltimos 10 movimientos de la cuenta que recibe el rest</span></span></a></li>
+</ul>
+</li>
+<li><span style="text-decoration: underline;"><span style="color: #000000; text-decoration: underline;">Crear movimiento de una cuenta:</span></span> Se ejecutar&aacute; el metodo @POST desde el MovimientoRest y crear&aacute; en la tabla un nuevo movimiento.</li>
+<li>Actualizar un movimiento de una cuenta:&nbsp;Se ejecutar&aacute; el metodo @PUT y crear&aacute; en la tabla un nuevo movimiento.</li>
+<li>Obtener el saldo de una cuenta: Desde la entidad se creo una query que devolver&aacute; el importe del saldo correspondiente.</li>
+<li>Obtener todos los movimientos de una cuenta dado un estado corrsepondiente: Para este punto se env&iacute;a como parametro un estado y se ejecuta de la siguiente manera.
+<ul>
+<li><a href="http://localhost:8080/LaEvasion/rest/Movimiento/">http://localhost:8080/LaEvasion/rest/movimiento/porEstado/Estado : Devolvera una lista de todos los movimientos que poseen ese estado.</a></li>
+</ul>
+</li>
+<li>Buscar movimientos de una cuenta seg&uacute;n una descripcion dada: Fue necesario modificar la entidad movimientos agregandole el atributo descripcion del tipo texto. Este &uacute;ltimo es el que funcionar&aacute; como parametro cuando se llame al Rest.
+<ul>
+<li><a href="http://localhost:8080/LaEvasion/rest/movimiento/MovPorDescr/descripcion:">http://localhost:8080/LaEvasion/rest/movimiento/MovPorDescr/descripcion Devolvera una lista que contenga todos los movimientos que tienen esa descripcion.</a></li>
+</ul>
+</li>
+</ul>

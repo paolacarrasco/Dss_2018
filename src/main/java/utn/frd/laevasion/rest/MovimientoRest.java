@@ -33,10 +33,11 @@ public class MovimientoRest{
 
 
 @GET
+@Path("ultimosMov/idCuenta")
 
 @Produces({MediaType.APPLICATION_JSON})
-public List<Movimiento>findAllOrdenados(){
-return ejbMovimientoFacade.findAllOrdenados();
+public List<Movimiento>findAllOrdenados(@PathParam("idCuenta")int idCuenta){
+return ejbMovimientoFacade.findAllOrdenados(idCuenta);
 }
 
 
@@ -60,13 +61,16 @@ ejbMovimientoFacade.edit(movimiento);
 }
 
 @GET
-@Path ("/{descrip}")
+@Path ("MovPorDescr/{descripcion}")
 @Produces({MediaType.APPLICATION_JSON})
 
-public List<Movimiento> findByDescripcion(@PathParam("descrip")String descrip){
-return ejbMovimientoFacade.findByDescrip(descrip);
+public List<Movimiento> findByDescripcion(@PathParam("descripcion")String descrip){
+return ejbMovimientoFacade.findByDescrip(descripcion);
 }
 
+@GET
+@Path ("porEstado/{estado}")
+@Produces({MediaType.APPLICATION_JSON})
 //Enlistar los movimientos pasando como parametro el id del estado determinado
 public List<Movimiento> findByEstado(@PathParam("estado")int estado){
 return ejbMovimientoFacade.findByEstado(estado);
