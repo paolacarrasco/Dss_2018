@@ -67,10 +67,6 @@ public List<Movimiento> findByDescripcion(@PathParam("descrip")String descrip){
 return ejbMovimientoFacade.findByDescrip(descrip);
 }
 
-
-
-
-
 //Enlistar los movimientos pasando como parametro el id del estado determinado
 public List<Movimiento> findByEstado(@PathParam("estado")int estado){
 return ejbMovimientoFacade.findByEstado(estado);

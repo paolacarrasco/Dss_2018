@@ -70,4 +70,4 @@ ejbClienteFacade.remove( ejbClienteFacade.find(id) );
 public Cliente findById(@PathParam("id")long id){
 return ejbClienteFacade.find(id);
     }
-}
+}       

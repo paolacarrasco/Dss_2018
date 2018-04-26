@@ -30,10 +30,12 @@ public class MovimientoFacade extends AbstractFacade<Movimiento> {
     }
     
     //Enlisto todos los ultimos diez movimientos
-      public List <Movimiento> findAllOrdenados(){
+      public List <Movimiento> findAllOrdenados(long id){
         return em.createNamedQuery("Movimiento.findAllOrdenados",Movimiento.class)
+                .setParameter("id", id)
+                .setMaxResults(10)
                 .getResultList();
-      }
+       }
       public List<Movimiento>findByEstado(int estado){
         return em.createNamedQuery("Movimiento.findByEstado",Movimiento.class)
                 .setParameter("estado", estado)

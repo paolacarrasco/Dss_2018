@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Movimiento.findAll", query = "SELECT m FROM Movimiento m "),
     //creo named query para obtener los 10 elementos ordenados
-    @NamedQuery(name = "Movimiento.findAllOrdenados", query = "SELECT m FROM Movimiento m  order by m.creado limit 10")
+    @NamedQuery(name = "Movimiento.findAllOrdenados", query = "SELECT m FROM Movimiento m WHERE m.idCuenta = :idCuenta ORDER BY  m.creado DESC ")
     , @NamedQuery(name = "Movimiento.findById", query = "SELECT m FROM Movimiento m WHERE m.id = :id")
     , @NamedQuery(name = "Movimiento.findByCreado", query = "SELECT m FROM Movimiento m WHERE m.creado = :creado")
     , @NamedQuery(name = "Movimiento.findByProcesado", query = "SELECT m FROM Movimiento m WHERE m.procesado = :procesado")
@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Movimiento.findByEstado", query = "SELECT m FROM Movimiento m WHERE m.estado = :estado")
     , @NamedQuery(name = "Movimiento.findByImporte", query = "SELECT m FROM Movimiento m WHERE m.importe = :importe")
     , @NamedQuery(name = "Movimiento.findByDescripcion", query = "SELECT m FROM Movimiento m WHERE m.descrip = :descrip")
-    , @NamedQuery(name = "Movimiento.getSaldo", query = "SELECT SUM (m.importe) (CASE when m.tipo=2 then m.importe E -m.importe END) from movimiento as m where m.id_cuenta = :idCuenta")
+    , @NamedQuery(name = "Movimiento.getSaldo", query = "SELECT SUM(CASE WHEN (m.tipo = 2) THEN m.importe ELSE -m.importe END) FROM Movimiento m WHERE m.idCuenta = :idCuenta")
     , @NamedQuery(name = "Movimiento.findByIdCuenta", query = "SELECT m FROM Movimiento m WHERE m.idCuenta = :idCuenta")})
 public class Movimiento implements Serializable {
 
